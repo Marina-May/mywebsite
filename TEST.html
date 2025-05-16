@@ -1,0 +1,803 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education Website</title>
+<style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: arial ;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-image: url('2.jpg');
+            background-repeat: no-repeat;
+            background-attachment: center;
+            background-size: cover;
+        }
+        
+        .logo {
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+        
+        nav {
+            background-color: #34495e;
+            padding: 10px 0;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin: 0 15px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            background-color: #2c3e50;
+        }
+        
+        /* Main Content Styles */
+        .main-content {
+            display: flex;
+            margin: 20px 0;
+        }
+        
+        .sidebar {
+            width: 25%;
+            padding-right: 20px;
+        }
+        
+        .lecture-content {
+            width: 75%;
+            background-color: #AFEEEE;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        /* Template Cards */
+        .template-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .card {
+            background-color: #C0C0C0;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card i {
+            font-size: 2rem;
+            color: #3498db;
+            margin-bottom: 10px;
+        }
+        
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #DB7093;
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #4682B4;
+        }
+        
+        tr:hover {
+            background-color: #FAEBD7;
+        }
+        
+        /* Media Styles */
+        .media-container {
+            margin: 25px 0;
+        }
+        
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+        }
+        
+        /* Q&A Section */
+        .qa-section {
+            margin: 30px 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            border-left: 5px solid #3498db;
+        }
+        
+        .qa-section h2 {
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .question-form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+            align-self: flex-start;
+        }
+        
+        .submit-btn:hover {
+            background-color: #2980b9;
+        }
+        
+        /* Footer Styles */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 30px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .sidebar, .lecture-content {
+                width: 100%;
+            }
+            
+            .sidebar {
+                padding-right: 0;
+                margin-bottom: 20px;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 5px 0;
+            }
+        }
+        
+        /* Home Content Styles */
+        .home-content {
+            text-align: center;
+            color: black;
+            background-color: #E0FFFF;
+            font-family: arial;
+            font-size: 20px;
+            padding: 20px;
+        }
+        
+        .home-content img {
+            max-width: 300px;
+            height: auto;
+            margin: 20px 0;
+        }
+        
+        /* Classification Table Styles */
+        .classification-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .classification-table th, 
+        .classification-table td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        
+        .classification-table th {
+            background-color: #DDA0DD;
+        }
+        
+        .classification-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        /* Discussion and Lectures content styles */
+        .discussion-content, .lectures-content {
+            background-color: #87CEEB;
+            padding: 20px;
+            font-family: arial;
+            font-size: 20px;
+        }
+
+        /* Video content styles */
+        .video-content {
+            background-color: #87CEEB;
+            padding: 20px;
+            font-family: arial;
+        }
+
+        .video-content h4, .video-content h5, .video-content h6 {
+            margin-top: 20px;
+        }
+    </style>
+
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">EducationHub</div>
+            <p>Lecture Platform</p>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#" id="home-tab">Home</a></li>
+                <li><a href="#" id="modules-tab">Course Modules</a></li>
+                <li><a href="#" id="lectures-tab">Lectures</a></li>
+                <li><a href="#" id="resources-tab">Resources</a></li>
+                <li><a href="#" id="discussion-tab">Discussion</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <div class="main-content">
+            <aside class="sidebar">
+                <h3>Course Modules</h3>
+                <ul>
+                    <li><a href="#">Introduction</a></li>
+                    <li><a href="#">Module 1: Course Schedule</a></li>
+                    <li><a href="#">Module 2: Videos & Photos</a></li>
+                </ul>
+                
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#">AASHTO (American Association of State Highway and Transportation Officials). "AASHTO Guide for Design of Pavement Structure" .Washington,DC: AASHTO,1993.</a></li>
+                    <li><a href="#">Carey,W,and P,Irick. " The Pavement Serviceability Performance Concept " Highway Research Board Special Report 61E,AASHTO Road Test,1962.</a></li>
+                    <li><a href="#">Lab Test Result</a></li>
+                </ul>
+            </aside>
+            
+            <main class="lecture-content" id="content-area">
+                <!-- Default content will be loaded here -->
+                <div id="home-content" class="home-content">
+                    <h2>Introduction about Pavement</h2>
+                    <p>Pavements are divided into two main categories: Rigid and Flexible. The road pavement is the actual surface on which the vehicles will travel. It's purpose is providing friction for the vehicles.</p>
+                    <img src="Types-of-Road-Pavement.jpg" alt="Types of Road Pavement">
+                </div>
+                
+                <div id="default-content" style="display:none;">
+                    <h1>Rigid Pavement</h1>
+                    <p class="lecture-meta">Posted on: April 18, 2025 | Instructor: Marina</p>
+                    
+                    <section class="template-section">
+                        <h2>Learning Templates</h2>
+                        <div class="template-cards">
+                            <div class="card" id="photo-examples-card">
+                                <i>📚</i>
+                                <h3>Photo Examples</h3>
+                                <p>Detailed course materials</p>
+                            </div>
+                            <div class="card" id="qa-card">
+                                <i>📝</i>
+                                <h3>Q & A</h3>
+                                <p>Discuss what you learned</p>
+                            </div>
+                            <div class="card" id="video-example-card">
+                                <i>🎥</i>
+                                <h3>Video Example</h3>
+                                <p>Watch and learn</p>
+                            </div>
+                            <div class="card" id="classification-card">
+                                <i>🧪</i>
+                                <h3>Classification</h3>
+                                <p>Vehicle Types</p>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section id="photo-examples-content" style="display:none;">
+                        <div class="media-container">
+                            <h2>Learning with Lab Tests</h2>
+                            <div class="image-container">
+                                <img src="Soundness Test.jpeg" alt="Soundness Test" style="width:500px;height:300px;">
+                                <p>Figure 1: Soundness Test</p>
+                                <img src="Acidity or Basicity of a liquid sample.jpeg" alt="Acidity or Basicity of a liquid sample" style="width:600px;height:400px;">
+                                <p>Figure 2: Acidity or Basicity of a liquid sample</p>
+                                <img src="Fineness Test.jpeg" alt="Fineness Test" style="width:600px;height:600px;">
+                                <p>Figure 3: Fineness Test</p>
+                                <img src="Slump Test.jpg" alt="Slump Test" style="width:500px;height:600px;">
+                                <p>Figure 4: Slump Test</p>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section id="classification-content" style="display:none;">
+                        <h2>Table: Classification of Vehicle Types</h2>
+                        <table class="classification-table">
+                            <thead>
+                                <tr>
+                                    <th>Vehicle Class</th>
+                                    <th>Weight Limit (include Goods)</th>
+                                    <th>Vehicle Type</th>
+                                    <th>Classification</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Class-A</td>
+                                    <td>&lt; 2 ton</td>
+                                    <td>Passenger Cars</td>
+                                    <td rowspan="6">2 axle<br>4 tire</td>
+                                </tr>
+                                <tr>
+                                    <td>Class-B</td>
+                                    <td>4 ton</td>
+                                    <td>Farm truck (engine with two piston)</td>
+                                </tr>
+                                <tr>
+                                    <td>Class-C</td>
+                                    <td>5 ton</td>
+                                    <td>(Hilux, Light truck) (Small)</td>
+                                </tr>
+                                <tr>
+                                    <td>Class-D</td>
+                                    <td>6 ton</td>
+                                    <td>(Dyna, Canter, Light truck) (Medium)</td>
+                                </tr>
+                                <tr>
+                                    <td>Class-E</td>
+                                    <td>8 ton</td>
+                                    <td>Farm truck (engine with four piston)</td>
+                                </tr>
+                                <tr>
+                                    <td>Class-F</td>
+                                    <td>9 ton</td>
+                                    <td>[(Dyna, Canter, Light truck) – Body length 15' under (6 wheel)] Mini-Bus (passenger-24), Hino (passenger-25)</td>
+                                </tr>
+                                <tr>
+                                    <td>Class-G</td>
+                                    <td>12 ton</td>
+                                    <td>(Dyna, Canter) – Body length 15' above (6 wheel)</td>
+                                    <td rowspan="5">Single-Unit Truck<br>6 tire</td>
+                                </tr>
+                                <tr>
+                                    <td>Class-H</td>
+                                    <td>13 ton</td>
+                                    <td>BM Bus (passenger-26 to 35)</td>
+                                </tr>
+                                <tr>
+                                    <td>Class-I</td>
+                                    <td>16 ton</td>
+                                    <td>TE-11, TE-21, GMC, Fuso, UD-Condor (6 wheel) truck, Hino, Hyundai, BM Bus (passenger-36 to 45), (2 axle-6 tire) truck</td>
+                                </tr>
+                                <tr>
+                                    <td>Class-J</td>
+                                    <td>18 ton</td>
+                                    <td>Express Bus (passenger-46 above)</td>
+                                </tr>
+                                <tr>
+                                    <td>Class-K</td>
+                                    <td>21 ton</td>
+                                    <td>(3 axle-8 tire) truck</td>
+                                </tr>
+                                <tr>
+                                    <td>Class-L</td>
+                                    <td>23 ton</td>
+                                    <td>(3 axle-10 tire) truck</td>
+                                    <td rowspan="5">3 axle<br>or more</td>
+                                </tr>
+                                <tr>
+                                    <td>Class-M</td>
+                                    <td>27 ton</td>
+                                    <td>(4 axle-12 tire) truck</td>
+                                </tr>
+                                <tr>
+                                    <td>Class-N</td>
+                                    <td>31 ton</td>
+                                    <td>(5 axle including lift axle -14 tire)</td>
+                                </tr>
+                                <tr>
+                                    <td>Class-O</td>
+                                    <td>46 ton</td>
+                                    <td>(5 axle-18 tire) tractor-semitrailer</td>
+                                </tr>
+                                <tr>
+                                    <td>Class-P</td>
+                                    <td>50.5 ton</td>
+                                    <td>(6 axle-22 tire) tractor-semitrailer</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    
+                    <section class="table-section" id="course-schedule-content">
+                        <h2>Course Schedule</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Week</th>
+                                    <th>Topic</th>
+                                    <th>Activities</th>
+                                    <th>Seminar Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Introduction about Pavement</td>
+                                    <td>Reading, Video, Discussion, Quiz</td>
+                                    <td>April 15</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Types</td>
+                                    <td>Reading, Video, Discussion, Quiz</td>
+                                    <td>April 16</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Lab Sample</td>
+                                    <td>Reading, Video, Discussion, Quiz</td>
+                                    <td>April 17</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Summary</td>
+                                    <td>Reading, Video, Discussion, Quiz</td>
+                                    <td>April 18</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    
+                    <section class="qa-section" id="qa-content">
+                        <h2>Have a Question?</h2>
+                        <p>Submit your questions below and our instructors will respond within 24 hours.</p>
+                        
+                        <form class="question-form">
+                            <div class="form-group">
+                                <label for="name">Your Name:</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email Address:</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="question">Your Question:</label>
+                                <textarea id="question" name="question" required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="submit-btn">Submit Question</button>
+                        </form>
+                    </section>
+
+                    <!-- Discussion Content Section -->
+                    <section id="discussion-content" class="discussion-content" style="display:none;">
+                        <h2> Advantages and Disadvantages of Rigid Pavement</h2>
+                        <h3>Advantages</h3>
+                        <ol>
+                            <li><a href="#">Low maintenance costs</a></li>
+                            <li><a href="#">Long Life with extreme durability</a></li>
+                            <li><a href="#">High value as a base for future resurfacing with asphalt</a></li>
+                            <li><a href="#">Load distribution over a wide area decreasing base and sub-grade requirements</a></li>
+                            <li><a href="#">Ability to place directly on poor soils</a></li> 
+                            <li><a href="#">No damage from oils and greases</a></li> 
+                            <li><a href="#">Strong edges</a></li>
+                        </ol>
+                        <h3> Disadvantages </h3>
+                        <ol>
+                            <li><a href="#">High initial costs</a></li>	
+                            <li><a href="#">Joint required for contraction and expansion</a></li>	
+                            <li><a href="#">Generally rough riding quality</a></li>	
+                            <li><a href="#">High repair costs</a></li>  
+                        </ol>	
+                    </section>
+
+                    <!-- Lectures Content Section -->
+                    <section id="lectures-content" class="lectures-content" style="display:none;">
+                        <h2> Introduction about Rigid Pavement </h2>
+                        <p> Rigid Pavement is the road which is made up of concrete. A rigid pavement is constructed from cement concrete or reinforced concrete slabs. Grouted concrete roads are in the category of Semi-Rigid Pavement. The design of Rigid Pavement is based on providing a structural cement concrete slab of sufficient strength to resist the loads from Traffic. </p>
+                        <h3> Types of Rigid Pavement </h3>
+                        <p> Rigid pavements are differentiated into three major categories by their means of crack control.They are</p>
+                        <ol>
+                            <li><a href="#"> Jointed Plain Concrete Pavement ( JPCP)</a></li>
+                            <li><a href="#"> Jointed Reinforces Concrete Pavement ( JRCP)</a></li>
+                            <li><a href="#"> Continuously Reinforced Concrete Pavement ( CRCP)</a></li>
+                        </ol>
+                    </section>
+
+                    <!-- Video Content Section -->
+                    <section id="video-content" class="video-content" style="display:none;">
+                        <h2>Learning with Lab Test</h2>
+                        <div class="video-container">
+                            <h3>Determine Fineness of Cement With Blaine Aparatus - 720P HD</h3>
+                            <iframe src="C:\Users\USER\Desktop\TEST\Determine Fineness of Cement With Blaine Aparatus - 720P HD.mp4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        
+                        <div class="video-container">
+                            <h4>how to find the density of cement_ construction la - 720P HD</h4>
+                            <iframe src="C:\Users\USER\Desktop\TEST\how to find the density of cement_ construction la - 720P HD.mp4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        
+                        <div class="video-container">
+                            <h5>Soundness Test by Le-Chatelier Method - 480P</h5>
+                            <iframe src="C:\Users\USER\Desktop\TEST\Soundness Test by Le-Chatelier Method - 480P.mp4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </section>
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Education Platform. All rights reserved.</p>
+            <p>Contact: marinamay134@gmail.com | Phone: (123) 456-7890</p>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all tab elements
+            const homeTab = document.getElementById('home-tab');
+            const modulesTab = document.getElementById('modules-tab');
+            const lecturesTab = document.getElementById('lectures-tab');
+            const resourcesTab = document.getElementById('resources-tab');
+            const discussionTab = document.getElementById('discussion-tab');
+            
+            // Get content areas
+            const contentArea = document.getElementById('content-area');
+            const homeContent = document.getElementById('home-content');
+            const defaultContent = document.getElementById('default-content');
+            
+            // Template card sections
+            const photoExamplesContent = document.getElementById('photo-examples-content');
+            const classificationContent = document.getElementById('classification-content');
+            const courseScheduleContent = document.getElementById('course-schedule-content');
+            const qaContent = document.getElementById('qa-content');
+            const discussionContent = document.getElementById('discussion-content');
+            const lecturesContent = document.getElementById('lectures-content');
+            const videoContent = document.getElementById('video-content');
+            
+            // Template cards
+            const photoExamplesCard = document.getElementById('photo-examples-card');
+            const classificationCard = document.getElementById('classification-card');
+            const videoExampleCard = document.getElementById('video-example-card');
+            const qaCard = document.getElementById('qa-card');
+            
+            // Initially show home content and hide default content
+            homeContent.style.display = 'block';
+            defaultContent.style.display = 'none';
+            
+            // Show default sections initially
+            courseScheduleContent.style.display = 'block';
+            qaContent.style.display = 'block';
+            photoExamplesContent.style.display = 'none';
+            classificationContent.style.display = 'none';
+            discussionContent.style.display = 'none';
+            lecturesContent.style.display = 'none';
+            videoContent.style.display = 'none';
+            
+            // Tab click event handlers
+            homeTab.addEventListener('click', function(e) {
+                e.preventDefault();
+                homeContent.style.display = 'block';
+                defaultContent.style.display = 'none';
+                // Hide all other content sections
+                discussionContent.style.display = 'none';
+                lecturesContent.style.display = 'none';
+            });
+            
+            modulesTab.addEventListener('click', function(e) {
+                e.preventDefault();
+                homeContent.style.display = 'none';
+                defaultContent.style.display = 'block';
+                // Show default sections
+                courseScheduleContent.style.display = 'block';
+                qaContent.style.display = 'block';
+                photoExamplesContent.style.display = 'none';
+                classificationContent.style.display = 'none';
+                discussionContent.style.display = 'none';
+                lecturesContent.style.display = 'none';
+                videoContent.style.display = 'none';
+            });
+            
+            lecturesTab.addEventListener('click', function(e) {
+                e.preventDefault();
+                homeContent.style.display = 'none';
+                defaultContent.style.display = 'block';
+                // Show lectures content and hide others
+                courseScheduleContent.style.display = 'none';
+                qaContent.style.display = 'none';
+                photoExamplesContent.style.display = 'none';
+                classificationContent.style.display = 'none';
+                discussionContent.style.display = 'none';
+                lecturesContent.style.display = 'block';
+                videoContent.style.display = 'none';
+            });
+            
+            resourcesTab.addEventListener('click', function(e) {
+                e.preventDefault();
+                homeContent.style.display = 'none';
+                defaultContent.style.display = 'block';
+                // Show default sections
+                courseScheduleContent.style.display = 'block';
+                qaContent.style.display = 'block';
+                photoExamplesContent.style.display = 'none';
+                classificationContent.style.display = 'none';
+                discussionContent.style.display = 'none';
+                lecturesContent.style.display = 'none';
+                videoContent.style.display = 'none';
+            });
+            
+            discussionTab.addEventListener('click', function(e) {
+                e.preventDefault();
+                homeContent.style.display = 'none';
+                defaultContent.style.display = 'block';
+                // Show discussion content and hide others
+                courseScheduleContent.style.display = 'none';
+                qaContent.style.display = 'none';
+                photoExamplesContent.style.display = 'none';
+                classificationContent.style.display = 'none';
+                discussionContent.style.display = 'block';
+                lecturesContent.style.display = 'none';
+                videoContent.style.display = 'none';
+            });
+            
+            // Template card click event handlers
+            photoExamplesCard.addEventListener('click', function(e) {
+                e.preventDefault();
+                courseScheduleContent.style.display = 'none';
+                qaContent.style.display = 'none';
+                photoExamplesContent.style.display = 'block';
+                classificationContent.style.display = 'none';
+                discussionContent.style.display = 'none';
+                lecturesContent.style.display = 'none';
+                videoContent.style.display = 'none';
+            });
+            
+            classificationCard.addEventListener('click', function(e) {
+                e.preventDefault();
+                courseScheduleContent.style.display = 'none';
+                qaContent.style.display = 'none';
+                photoExamplesContent.style.display = 'none';
+                classificationContent.style.display = 'block';
+                discussionContent.style.display = 'none';
+                lecturesContent.style.display = 'none';
+                videoContent.style.display = 'none';
+            });
+            
+            videoExampleCard.addEventListener('click', function(e) {
+                e.preventDefault();
+                courseScheduleContent.style.display = 'none';
+                qaContent.style.display = 'none';
+                photoExamplesContent.style.display = 'none';
+                classificationContent.style.display = 'none';
+                discussionContent.style.display = 'none';
+                lecturesContent.style.display = 'none';
+                videoContent.style.display = 'block';
+            });
+            
+            qaCard.addEventListener('click', function(e) {
+                e.preventDefault();
+                courseScheduleContent.style.display = 'none';
+                qaContent.style.display = 'block';
+                photoExamplesContent.style.display = 'none';
+                classificationContent.style.display = 'none';
+                discussionContent.style.display = 'none';
+                lecturesContent.style.display = 'none';
+                videoContent.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
